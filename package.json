@@ -1,0 +1,20 @@
+{
+  "name": "blca",
+  "version": "1.0.0",
+  "description": "Software libraries supporting https://observablehq.com/@episphere/bladder",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/episphere/blca.git"
+  },
+  "author": "Jonas Almeida",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/episphere/blca/issues"
+  },
+  "homepage": "https://github.com/episphere/blca#readme"
+}
