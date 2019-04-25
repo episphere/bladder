@@ -1,4 +1,3 @@
-
 const http = require('http');
 const axios = require('axios');
 
@@ -9,17 +8,18 @@ const server = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  axios.get('http://firebrowse.org/api/v1/Samples/mRNASeq?format=json&gene=PSCA&cohort=BLCA&protocol=RSEM&page=1&page_size=250&sort_by=cohort')
-    .then(function (x) {
-      res.end(JSON.stringify(x.data,null,3));
-      //console.log(response);
-    })
-    .catch(function (err) {
-      res.end(JSON.stringify(err,null,3))
-      //console.log(error);
-    });
-  //let x={hello:'world'}
-  
+  if(req.url.length>15){
+    console.log(`call from ${req.headers.origin} at ${Date()}`)
+    axios.get(decodeURIComponent(req.url.slice(2)))
+      .then(function (x) {
+        res.end(JSON.stringify(x.data,null,3));
+      })
+      .catch(function (err) {
+        res.end(JSON.stringify(err,null,3))
+      });
+  }else{
+      res.end(JSON.stringify({},null,3))
+  }
 });
 
 server.listen(port);
